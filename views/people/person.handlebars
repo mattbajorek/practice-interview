@@ -1,0 +1,24 @@
+<h1>{{person.name}}'s profile</h1>
+
+{{#if logged_in}}
+  <form action="/people/{{person.id}}?_method=PUT" method="POST">
+    <input type="text" name="name" value="{{person.name}}">
+    <input type="submit">
+  </form>
+{{/if}}
+
+{{#unless logged_in}}
+  <p>
+    You must login to add a person.
+  </p>
+{{/unless}}
+
+<h2>Tasks for {{person.name}}</h2>
+
+<ul>
+  {{#each person.Tasks}}
+    <li>
+      {{this.task}}
+    </li>
+  {{/each}}
+</ul>
